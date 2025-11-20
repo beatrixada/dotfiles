@@ -82,6 +82,7 @@ in
       emacs
       erlang_28
       flyctl
+      gemini-cli
       gh
       gradle8
       hyperfine
@@ -104,10 +105,12 @@ in
       nmap
       nodejs_24
       # ollama
+      openssh
       ouch
       pandoc
       pgformatter
       pinentry_mac
+      poppler-utils
       python314
       quarkus
       rustup
@@ -246,7 +249,7 @@ in
   programs = {
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
-    awscli.enable = true;
+    # awscli.enable = true;
     bash.enable = true;
     java.enable = true;
     jujutsu.enable = true;
