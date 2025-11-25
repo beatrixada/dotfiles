@@ -92,7 +92,9 @@ in
       mas
       maven
       meld
+      micronaut
       mitmproxy
+      mvnd
       natscli
       ncdu
       nil
