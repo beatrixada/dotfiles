@@ -271,7 +271,7 @@ in
     };
     mise = {
       enable = true;
-      enableNushellIntegration = true;
+      enableNushellIntegration = false;
     };
     nushell = {
       enable = true;
