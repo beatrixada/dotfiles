@@ -249,7 +249,7 @@ in
   programs = {
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
-    # awscli.enable = true;
+    awscli.enable = true;
     bash.enable = true;
     java.enable = true;
     jujutsu.enable = true;
