@@ -94,7 +94,7 @@ in
       maven
       meld
       micronaut
-      mitmproxy
+      # mitmproxy (currently broken)
       mvnd
       natscli
       ncdu
