@@ -184,7 +184,7 @@ in
         font-feature = -dlig
         scrollback-limit = 1_000_000_000
         auto-update = download
-        auto-update-channel = tip
+        auto-update-channel = stable
         command = ${pkgs.nushell}/bin/nu
         keybind = shift+enter=text:\n
       '';
