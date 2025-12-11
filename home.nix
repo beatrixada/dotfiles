@@ -22,7 +22,6 @@ let
   '';
   unfreePackages = [
     pkgs._1password-cli
-    pkgs.claude-code
   ];
   launchctl-setenv = pkgs.writeShellScriptBin "launchctl-setenv" (
     concatStringsSep "\n" (
