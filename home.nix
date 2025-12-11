@@ -173,6 +173,7 @@ in
     enable = true;
     configFile = {
       "fish/config.fish".source = xdg-config/fish/config.fish;
+      "mise/config.toml".source = xdg-config/mise/config.toml;
       "ghostty/config".text = ''
         macos-option-as-alt = left
         keybind = alt+left=esc:b
@@ -189,6 +190,7 @@ in
         keybind = shift+enter=text:\n
       '';
       "nushell/nix.nu".source = xdg-config/nushell/nix.nu;
+      "nushell/mise.nu".source = xdg-config/nushell/mise.nu;
       "powershell".source = xdg-config/powershell;
       "python".source = xdg-config/python;
       "zsh" = {
@@ -270,7 +272,7 @@ in
       package = pkgs.gradle_9;
     };
     mise = {
-      enable = true;
+      enable = false;
       enableNushellIntegration = false;
     };
     nushell = {
