@@ -120,6 +120,7 @@ in
       source-code-pro
       spring-boot-cli
       sqlite
+      ssm-session-manager-plugin
       unar
       visualvm
       xdg-ninja
