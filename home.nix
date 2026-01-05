@@ -190,7 +190,6 @@ in
         keybind = shift+enter=text:\n
       '';
       "nushell/nix.nu".source = xdg-config/nushell/nix.nu;
-      "nushell/mise.nu".source = xdg-config/nushell/mise.nu;
       "powershell".source = xdg-config/powershell;
       "python".source = xdg-config/python;
       "zsh" = {
@@ -272,8 +271,9 @@ in
       package = pkgs.gradle_9;
     };
     mise = {
-      enable = false;
-      enableNushellIntegration = false;
+      enable = true;
+      enableNushellIntegration = true;
+      enableBashIntegration = true;
     };
     nushell = {
       enable = true;
