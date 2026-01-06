@@ -72,3 +72,19 @@ $env.config = {
     }
 }
 
+# Create a jj workspace with bd redirect for parallel agent development
+def bd-jj-workspace [name: string] {
+    let repo_name = (pwd | path basename)
+    let workspace_path = $"..(char path_sep)($repo_name)-($name)"
+    let main_beads = $"($env.HOME)/SwiftlyInc/.beads"
+
+    # Create jj workspace
+    jj workspace add $workspace_path
+
+    # Set up bd redirect
+    mkdir $"($workspace_path)/.beads"
+    $main_beads | save -f $"($workspace_path)/.beads/redirect"
+
+    print $"Created workspace: ($workspace_path)"
+    print $"bd redirect configured to: ($main_beads)"
+}
