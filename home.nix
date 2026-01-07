@@ -111,6 +111,7 @@ in
       pinentry_mac
       poppler-utils
       python314
+      python313Packages.trafilatura
       quarkus
       rustup
       scc
@@ -242,6 +243,7 @@ in
     FLY_CONFIG_DIR = "${config.xdg.stateHome}/fly";
     DOCKER_CONFIG = "${config.xdg.configHome}/docker";
     DOOMDIR = "${config.xdg.configHome}/home-manager/doom";
+    BD_JIRA_SCRIPT = "${config.home.homeDirectory}/beads/examples/jira-import/jira2jsonl.py";
   };
 
   home.shellAliases = {
