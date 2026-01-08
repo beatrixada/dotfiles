@@ -64,6 +64,7 @@ in
     ++ [
       (import ./packages/jdk-mission-control.nix { inherit pkgs; })
       (import ./packages/bd-jj-workspace.nix { inherit pkgs; })
+      (import ./packages/bd-jj-workspace-rm.nix { inherit pkgs; })
     ]
     ++ [
       # idris2
