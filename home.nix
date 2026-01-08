@@ -63,6 +63,7 @@ in
     ++ unfreePackages
     ++ [
       (import ./packages/jdk-mission-control.nix { inherit pkgs; })
+      (import ./packages/bd-jj-workspace.nix { inherit pkgs; })
     ]
     ++ [
       # idris2
@@ -253,26 +254,7 @@ in
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
     awscli.enable = true;
-    bash = {
-      enable = true;
-      initExtra = ''
-        # Create a jj workspace with bd redirect for parallel agent development
-        bd-jj-workspace() {
-          local name="$1"
-          local repo_name
-          repo_name="$(basename "$(pwd)")"
-          local workspace_path="../''${repo_name}-''${name}"
-          local main_beads="$HOME/SwiftlyInc/.beads"
-
-          jj workspace add "$workspace_path"
-          mkdir -p "''${workspace_path}/.beads"
-          echo "$main_beads" > "''${workspace_path}/.beads/redirect"
-
-          echo "Created workspace: $workspace_path"
-          echo "bd redirect configured to: $main_beads"
-        }
-      '';
-    };
+    bash.enable = true;
     java.enable = true;
     jujutsu.enable = true;
     ripgrep.enable = true;
