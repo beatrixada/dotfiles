@@ -257,6 +257,7 @@ in
     awscli.enable = true;
     bash.enable = true;
     java.enable = true;
+    java.package = pkgs.jdk25;
     jujutsu.enable = true;
     ripgrep.enable = true;
     uv.enable = true;
