@@ -202,14 +202,11 @@ in
     };
 
     dataFile = {
-      my-gradle_8-install = {
-        source = "${pkgs.gradle_8}/lib/gradle";
-      };
       my-maven-install = {
         source = "${pkgs.maven}";
       };
       my-gradle-install = {
-        source = "${pkgs.gradle_9}/lib/gradle";
+        source = "${pkgs.gradle_9}/libexec/gradle";
       };
       my-gradle-jdk = {
         source = pkgs.gradle_9.jdk.home;
