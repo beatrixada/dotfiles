@@ -274,6 +274,7 @@ in
     };
     mise = {
       enable = true;
+      package = pkgs.mise.overrideAttrs { doCheck = false; };
       enableNushellIntegration = true;
       enableBashIntegration = true;
     };
