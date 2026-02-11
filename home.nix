@@ -5,8 +5,6 @@
   user,
   userPackages,
   extraNushellConfig,
-  claude-code,
-  codex-cli-nix,
   lib,
   idris2,
   idris2Lsp,
@@ -52,8 +50,6 @@ in
   nixpkgs.config.allowUnfreePredicate =
     pkg: builtins.elem (lib.getName pkg) (lib.map (p: lib.getName p) unfreePackages);
   nixpkgs.overlays = [
-    claude-code.overlays.default
-
     (final: prev: {
       fish = stablePkgs.fish; # until https://nixpkgs-tracker.ocfox.me/?pr=462589 lands in unstable
     })
@@ -71,7 +67,6 @@ in
       # idris2Lsp
       # idris2Packages.pack
     ]
-    ++ [ codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default ]
     ++ (with pkgs; [
       # buck2 (broken)
       chezmoi
@@ -83,7 +78,6 @@ in
       emacs
       erlang_28
       flyctl
-      gemini-cli
       gh
       gradle8
       hyperfine
@@ -264,7 +258,7 @@ in
     };
     direnv = {
       enable = true;
-      enableNushellIntegration = false;
+      enableNushellIntegration = true;
       enableBashIntegration = false;
     };
     gradle = {
