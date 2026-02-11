@@ -13,11 +13,6 @@
     packageset.url = "github:mattpolzin/nix-idris2-packages";
     
   };
-  nixConfig = {
-    extra-substituters = [
-      "https://gh-nix-idris2-packages.cachix.org"
-    ];
-  };
   outputs =
     {
       nixpkgs,
