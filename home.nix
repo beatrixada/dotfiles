@@ -237,6 +237,7 @@ in
     DOCKER_CONFIG = "${config.xdg.configHome}/docker";
     DOOMDIR = "${config.xdg.configHome}/home-manager/doom";
     BD_JIRA_SCRIPT = "${config.home.homeDirectory}/beads/examples/jira-import/jira2jsonl.py";
+    CLAUDE_CODE_DISABLE_AUTO_MEMORY = "1";
   };
 
   home.shellAliases = {
