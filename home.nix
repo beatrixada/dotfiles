@@ -98,7 +98,6 @@ in
       nixfmt
       nixfmt-tree
       nmap
-      nodejs_24
       # ollama
       openssh
       ouch
@@ -259,7 +258,7 @@ in
     };
     direnv = {
       enable = true;
-      enableNushellIntegration = true;
+      enableNushellIntegration = false;
       enableBashIntegration = false;
     };
     gradle = {
