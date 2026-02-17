@@ -6,11 +6,6 @@
   userPackages,
   extraNushellConfig,
   lib,
-  idris2,
-  idris2Lsp,
-  idris2Packages,
-  buildIdris,
-  buildIdris',
   ...
 }:
 with lib;
@@ -167,6 +162,7 @@ in
       "mise/config.toml".source = xdg-config/mise/config.toml;
       "ghostty/config".text = ''
         macos-option-as-alt = left
+        keybind = alt+shift+minus=text:—
         keybind = alt+left=esc:b
         keybind = alt+right=esc:f
         font-family = "PragmataPro Mono"
