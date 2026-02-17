@@ -9,8 +9,14 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mac-app-util.url = "github:hraban/mac-app-util";
-    packageset.url = "github:mattpolzin/nix-idris2-packages";
+    mac-app-util = {
+      url = "github:beatrixada/mac-app-util";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    packageset = {
+      url = "github:mattpolzin/nix-idris2-packages";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
   };
   outputs =
