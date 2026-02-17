@@ -9,13 +9,20 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-utils.url = "github:numtide/flake-utils";
     mac-app-util = {
       url = "github:beatrixada/mac-app-util";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.cl-nix-lite.inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
     packageset = {
       url = "github:mattpolzin/nix-idris2-packages";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.idris2.inputs.flake-utils.follows = "flake-utils";
+      inputs.idris2Lsp.inputs.idris2Lsp.inputs.idris.inputs.flake-utils.follows = "flake-utils";
+      inputs.idris2Lsp.inputs.idris2Lsp.inputs.lspLib.follows =
+        "packageset/idris2Lsp/lspLib";
     };
 
   };
