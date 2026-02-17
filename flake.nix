@@ -3,20 +3,20 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mac-app-util.url = "github:hraban/mac-app-util";
     packageset.url = "github:mattpolzin/nix-idris2-packages";
-    
+
   };
   outputs =
     {
       nixpkgs,
-      nixpkgs-stable,
+      nixpkgs-unstable,
       home-manager,
       mac-app-util,
       packageset,
@@ -24,8 +24,23 @@
     }:
     let
       system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
-      stablePkgs = nixpkgs-stable.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          # https://github.com/nixos/nixpkgs/issues/488689
+          # inetutils 2.7 fails to build on aarch64-darwin due to -Wformat-security
+          (final: prev: {
+            inetutils = prev.inetutils.overrideAttrs (old: rec {
+              version = "2.6";
+              src = prev.fetchurl {
+                url = "mirror://gnu/${old.pname}/${old.pname}-${version}.tar.xz";
+                hash = "sha256-aL7b/q9z99hr4qfZm8+9QJPYKfUncIk5Ga4XTAsjV8o=";
+              };
+            });
+          })
+        ];
+      };
+      unstablePkgs = nixpkgs-unstable.legacyPackages.${system};
     in
     {
       homeConfigurations."ada" = home-manager.lib.homeManagerConfiguration {
@@ -38,7 +53,7 @@
           ./home.nix
         ];
         extraSpecialArgs = {
-          inherit stablePkgs;
+          inherit unstablePkgs;
           inherit (packageset.packages.${system})
             idris2
             idris2Lsp
@@ -62,7 +77,7 @@
           ./home.nix
         ];
         extraSpecialArgs = {
-          inherit stablePkgs;
+          inherit unstablePkgs;
           inherit (packageset.packages.${system})
             idris2
             idris2Lsp

@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  stablePkgs,
+  unstablePkgs,
   user,
   userPackages,
   extraNushellConfig,
@@ -49,11 +49,6 @@ in
   # environment.
   nixpkgs.config.allowUnfreePredicate =
     pkg: builtins.elem (lib.getName pkg) (lib.map (p: lib.getName p) unfreePackages);
-  nixpkgs.overlays = [
-    (final: prev: {
-      fish = stablePkgs.fish; # until https://nixpkgs-tracker.ocfox.me/?pr=462589 lands in unstable
-    })
-  ];
   home.packages =
     userPackages
     ++ unfreePackages
