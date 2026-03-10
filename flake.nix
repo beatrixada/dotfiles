@@ -38,6 +38,7 @@
                 hash = "sha256-aL7b/q9z99hr4qfZm8+9QJPYKfUncIk5Ga4XTAsjV8o=";
               };
             });
+            jujutsu = nixpkgs-unstable.legacyPackages.${system}.jujutsu;
           })
         ];
       };
